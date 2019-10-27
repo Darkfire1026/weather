@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<head>
+    
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+
+<title> weather struggles</title>
+</head>
+<html>
+
+
+
+<input type="text" id="cityName">
+<button onclick="getWeather();">enter a city</button>
+<div class="weatherResponse"></div>
+
+<text>
+
+</text>
+
+</div>
+
+
+</html>
+
+<script>
+
+
+function getWeather(){
+  
+  $('.weatherResponse').html('');
+  var cityName = $('#cityName').val();
+var apiCall =
+'http://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&APPID=9d99a946e00e12cdabdb11f8c17657b1&units=metric';
+
+$.getJSON(apiCall, weatherCallback);
+
+function weatherCallback(weatherData){
+  var cityName = weatherData.name;
+  var country = weatherData.sys.country;
+  var description = weatherData.weather[0].description;
+  var temp = weatherData.main.temp;
+var humid = weatherData.main.humidity;
+var pressure = weatherData.main.pressure;
+var wind = weatherData.wind.speed
+
+
+  
+ $('.weatherResponse').append(" the weather in" + cityName + " " + country +
+  " is currently " + description  +" and the tempature is currently" +  temp  + "celsius" +" and the humidity is" + 
+  humid + " and the wind speed is " + wind + "and last but not least the air pressure outside is!" + pressure );
+
+console.log(weatherData)
+
+localStorage 
+}
+}
+localStorage.setItem('.weatherResponse', cityName + country + description + temp + humid + wind + pressure );
+
+
+</script>
+
+
+
+
+
